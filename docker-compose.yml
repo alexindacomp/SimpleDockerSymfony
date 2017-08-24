@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+    db:
+        image: mysql
+        volumes:
+            - "db-data:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        ports:
+            - 3306:3306
+    php:
+        build: service
+        volumes:
+            - ${SERVICE_APP_PATH}:/var/www/books.com
+            - ./logs/books.com:/var/www/books.com/var/logs
+        links:
+            - db
+    nginx:
+        build: nginx
+        ports:
+            - 80:80
+        volumes_from:
+            - php
+        volumes:
+            - ${SERVICE_APP_PATH}:/var/www/books.com
+            - ./logs/nginx/:/var/log/nginx
+volumes:
+    db-data:

@@ -11,6 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class AuthorController extends Controller
 {
     /**
+     * Get all authors using limit and offset
+     *
      * @Route("/authors", name="get_authors_action")
      * @Method("GET")
      *
@@ -32,7 +34,7 @@ class AuthorController extends Controller
                 [
                     'status' => 'OK',
                     'message' => 'Ok',
-                    'data' => $books,
+                    'data' => ['books' => $books],
                     'offset' => $offset,
                     'limit' => $limit
                 ],

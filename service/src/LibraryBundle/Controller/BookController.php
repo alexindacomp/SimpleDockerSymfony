@@ -11,6 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class BookController extends Controller
 {
     /**
+     * Get all books using limit and offset
+     *
      * @Route("/books", name="get_books_action")
      * @Method("GET")
      *
@@ -32,7 +34,7 @@ class BookController extends Controller
                 [
                     'status' => 'OK',
                     'message' => 'Ok',
-                    'data' => $books,
+                    'data' => ['books' => $books],
                     'offset' => $offset,
                     'limit' => $limit
                 ],
@@ -52,6 +54,8 @@ class BookController extends Controller
     }
 
     /**
+     * Get books by author using limit and offset
+     *
      * @Route("/author/{id}/books", name="get_books_by_author_action")
      * @Method("GET")
      *
@@ -74,7 +78,7 @@ class BookController extends Controller
                 [
                     'status' => 'OK',
                     'message' => 'Ok',
-                    'data' => $books,
+                    'data' => ['books' => $books],
                     'offset' => $offset,
                     'limit' => $limit
                 ],

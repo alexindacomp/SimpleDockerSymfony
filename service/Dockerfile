@@ -1,4 +1,3 @@
-# See https://github.com/docker-library/php/blob/4677ca134fe48d20c820a19becb99198824d78e3/7.0/fpm/Dockerfile
 FROM php:7.0-fpm
 
 MAINTAINER Alexey Kolyada <alexindacomp@gmail.com>
@@ -35,7 +34,7 @@ RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
 
 # Clear cache and logs dirs
-RUN rm -rf /var/www/books.com/var/cache/* && \
-    rm -rf /var/www/books.com/var/logs/*
+RUN rm -rf /var/www/game.com/var/cache/* && \
+    rm -rf /var/www/game.com/var/logs/*
 
-WORKDIR /var/www/books.com
+WORKDIR /var/www/game.com
